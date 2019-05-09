@@ -18,3 +18,7 @@ function msg() {
 Notification.requestPermission(function(status) {
   console.log("通知の許可:", status);
 });
+
+function msg02(message) {
+  $(".fukidashi").text(message);
+}
