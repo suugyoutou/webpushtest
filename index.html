@@ -28,7 +28,7 @@
  //Service Workerの読み込み
   if('serviceWorker' in navigator){
    navigator.serviceWorker
-    .register('/firebase-messaging-sw.js')
+    .register('firebase-messaging-sw.js')
     .then(function(){
       console.log('Service Worker Registered');
    });
