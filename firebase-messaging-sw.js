@@ -12,6 +12,7 @@ firebase.initializeApp({
   'messagingSenderId': "540875100731"
 });
 const messaging = firebase.messaging();
+console.log('aabb');
 
 // Retrieve an instance of Firebase Messaging so that it can handle background
 // messages.
