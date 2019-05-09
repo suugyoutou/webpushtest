@@ -1,0 +1,34 @@
+<html>
+<head>
+<link rel="manifest" href="manifest.json">
+
+</head>
+
+<p>
+    <input type="button" id="btnSubscribe" value="通知を許可する">
+    <input type="button" id="btnUnSubscribe" value="トークン削除" style="display:none;">
+</p>
+<p><input type="text" value="YOUR-INCETANCE-ID-TOKEN" id="textInstanceIdToken" style="width:100%;box-sizing:border-box;"></p>
+<div id="sendWebPushArea" style="display:none;">
+    <p>下記をコピーしてこのタブを閉じ、別ブラウザで見てください</p>
+    <input type="text" value="" id="sendWebPush" style="width:100%;box-sizing:border-box;">
+</div>
+
+
+</html>
+<script src="https://www.gstatic.com/firebasejs/5.5.4/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var firebaseConfig = {
+    apiKey: "AIzaSyDed0wplBQAobaE0qLFcaa3X_XWjCwOgRE",
+    authDomain: "pwa-push-test-33892.firebaseapp.com",
+    databaseURL: "https://pwa-push-test-33892.firebaseio.com",
+    projectId: "pwa-push-test-33892",
+    storageBucket: "pwa-push-test-33892.appspot.com",
+    messagingSenderId: "540875100731",
+    appId: "1:540875100731:web:0a20afa4e5eb652a"
+  };
+  firebase.initializeApp(firebaseConfig);
+</script>
+<script src="jquery.js"></script>
+<script src="main.js"></script>

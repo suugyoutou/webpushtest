@@ -1,24 +1,74 @@
-//台詞リスト
-var serif = new Array();
-serif[1] = "こんにちはにゃん";
-serif[2] = "おはようにゃん";
-serif[3] = "まねきねこ が あらわれた";
-serif[4] = "イメージするのは常に最強の自分にゃ";
-serif[5] = "お腹空いたにゃん";
-serif[6] = "おやすみにゃ";
+const btnSubscribe = document.getElementById('btnSubscribe');
+const btnUnSubscribe = document.getElementById('btnUnSubscribe');
+const textInstanceIdToken = document.getElementById('textInstanceIdToken');
+const sendWebPushArea = document.getElementById('sendWebPushArea');
+const sendWebPush = document.getElementById('sendWebPush');
 
-serif[7] = "クリックされたにゃ";
+// メッセージング オブジェクトの取得
+const messaging = firebase.messaging();
 
-//ランダムに台詞を表示
-function msg() {
-  var a = Math.floor(Math.random() * 6);
-  $(".fukidashi").text(serif[a + 1]);
+// アプリにウェブ認証情報を設定する
+messaging.usePublicVapidKey("BADl04f91UtAWKcxZNliZGTOTLEnCThN-imwGMIvjRSrryQrDFMqaTWeyfDyaX0NU5Krzm2XZI0iB2bl3-4exKM");
+
+// 権限要求
+function requestPermission() {
+    // 通知を受信する権限を要求する
+    messaging.requestPermission().then(function() {
+        // 現在の登録トークンの取得
+        messaging.getToken().then(function(token) {
+            textInstanceIdToken.value = token;
+            btnSubscribe.style.display = 'none';
+            btnUnSubscribe.style.display = 'block';
+            sendWebPushArea.style.display = 'block';
+            sendWebPush.value = 'https://andus.heteml.jp/firebase_cloud_messaging/send.php?id=' + token;
+        }).catch(function(err) {
+            textInstanceIdToken.value = 'トークンの取得に失敗しました（' + err + '）。';
+        });
+    }).catch(function(err) {
+        textInstanceIdToken.value = '通知の許可が得られませんでした（' + err + '）。';
+    });
 }
 
-Notification.requestPermission(function(status) {
-  console.log("通知の許可:", status);
-});
-
-function msg02(message) {
-  $(".fukidashi").text(message);
+// トークン削除
+function deleteToken() {
+    // トークン取得
+    messaging.getToken().then(function(currentToken) {
+        // トークン削除
+        messaging.deleteToken(currentToken).then(function() {
+            textInstanceIdToken.value = 'トークンが削除されました';
+            btnSubscribe.style.display = 'block';
+            btnUnSubscribe.style.display = 'none';
+            sendWebPushArea.style.display = 'none';
+            sendWebPush.value = '';
+        }).catch(function(err) {
+            textInstanceIdToken.value = 'トークンの削除に失敗しました（' + err + '）。';
+        });
+    }).catch(function(err) {
+        textInstanceIdToken.value = 'トークンの取得に失敗しました（' + err + '）。';
+    });
 }
+
+// 初期化
+window.onload = function() {
+    // イベント登録
+    console.log('aaaa')
+    btnSubscribe.onclick = requestPermission;
+    btnUnSubscribe.onclick = deleteToken;
+    // トークン取得
+    messaging.getToken().then(function(currentToken) {
+        if (currentToken) {
+            // 本来ここでサーバにトークン送る処理
+            //sendTokenToServer(currentToken);
+            textInstanceIdToken.value = currentToken;
+            btnSubscribe.style.display = 'none';
+            btnUnSubscribe.style.display = 'block';
+            sendWebPushArea.style.display = 'block';
+            sendWebPush.value = 'https://andus.heteml.jp/firebase_cloud_messaging/send.php?id=' + currentToken;
+        } else {
+            // トークン無い場合
+            textInstanceIdToken.value = '通知の許可をしていません。「通知を許可する」を押してください。';
+        }
+    }).catch(function(err) {
+        textInstanceIdToken.value = 'トークンの取得に失敗しました（' + err + '）。';
+    });
+};
