@@ -71,7 +71,7 @@ self.addEventListener("notificationclick", function(event) {
 });
 
 
-importScripts("/__/firebase/4.10.0/firebase-app.js");
+importScripts2("/__/firebase/4.10.0/firebase-app.js");
 importScripts("/__/firebase/4.10.0/firebase-messaging.js");
 importScripts("/__/firebase/init.js");
 
