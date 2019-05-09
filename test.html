@@ -32,9 +32,14 @@
 </script>
 <script  type="application/javascript">
 //Service Workerの読み込み
-navigator.serviceWorker.getRegistrations().then(function(registrations) { for(let registration of registrations) { registration.unregister() } })
+if('serviceWorker' in navigator){
+navigator.serviceWorker
+.register('firebase-messaging-sw.js')
+.then(function(){
+  console.log('Service Worker Registered');
+});
 
-
+}
 </script>
 <script src="jquery.js"></script>
 <script src="main.js"></script>
