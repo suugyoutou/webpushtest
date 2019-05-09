@@ -11,6 +11,7 @@ importScripts('https://www.gstatic.com/firebasejs/4.8.1/firebase-messaging.js');
 firebase.initializeApp({
   'messagingSenderId': "540875100731"
 });
+const messaging = firebase.messaging();
 
 // Retrieve an instance of Firebase Messaging so that it can handle background
 // messages.
