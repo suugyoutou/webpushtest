@@ -5,9 +5,8 @@ const sendWebPushArea = document.getElementById('sendWebPushArea');
 const sendWebPush = document.getElementById('sendWebPush');
 
 // メッセージング オブジェクトの取得
-if (firebase.messaging.isSupported()){
-	const messaging = firebase.messaging();
-}
+const messaging = firebase.messaging();
+
 // アプリにウェブ認証情報を設定する
 messaging.usePublicVapidKey("BADl04f91UtAWKcxZNliZGTOTLEnCThN-imwGMIvjRSrryQrDFMqaTWeyfDyaX0NU5Krzm2XZI0iB2bl3-4exKM");
 
@@ -24,7 +23,6 @@ function requestPermission() {
             sendWebPush.value = 'https://andus.heteml.jp/firebase_cloud_messaging/send.php?id=' + token;
         }).catch(function(err) {
             textInstanceIdToken.value = 'トークンの取得に失敗しました（' + err + '）。';
-            console.log(err)
         });
     }).catch(function(err) {
         textInstanceIdToken.value = '通知の許可が得られませんでした（' + err + '）。';
@@ -72,5 +70,6 @@ window.onload = function() {
         }
     }).catch(function(err) {
         textInstanceIdToken.value = 'トークンの取得に失敗しました（' + err + '）。';
+        console.log(err)
     });
 };
