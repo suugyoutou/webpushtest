@@ -5,7 +5,6 @@ importScripts('https://www.gstatic.com/firebasejs/4.8.1/firebase-app.js');
 importScripts('https://www.gstatic.com/firebasejs/4.8.1/firebase-messaging.js');
 
 
-const messaging = firebase.messaging();
 
 // Initialize the Firebase app in the service worker by passing in the
 // messagingSenderId.
