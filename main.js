@@ -5,8 +5,9 @@ const sendWebPushArea = document.getElementById('sendWebPushArea');
 const sendWebPush = document.getElementById('sendWebPush');
 
 // メッセージング オブジェクトの取得
-const messaging = firebase.messaging();
-
+if (firebase.messaging.isSupported())
+	const messaging = firebase.messaging();
+}
 // アプリにウェブ認証情報を設定する
 messaging.usePublicVapidKey("BADl04f91UtAWKcxZNliZGTOTLEnCThN-imwGMIvjRSrryQrDFMqaTWeyfDyaX0NU5Krzm2XZI0iB2bl3-4exKM");
 
