@@ -81,7 +81,7 @@ importScripts("https://www.gstatic.com/firebasejs/4.8.1/firebase-app.js");
 importScripts("https://www.gstatic.com/firebasejs/4.8.1/firebase-messaging.js");
 
 firebase.initializeApp({
-  messagingSenderId: "<送信者ID>"
+  messagingSenderId: "540875100731"
 });
 
 self.addEventListener("push", function(event) {
