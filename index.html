@@ -15,7 +15,7 @@
   </head>
   <body>
     <div class="container">
-      <div class="fukidashi">招き猫をタップしてね1</div>
+      <div class="fukidashi">招き猫をタップしてね11</div>
       <div class="fukidashi_fuchi">
         <img src="img/fukidashi_fuchi.png" alt="">
       </div>
@@ -26,7 +26,19 @@
 
 
     <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
-    <script>
+		<script  type="application/javascript">
+		//Service Workerの読み込み
+		if('serviceWorker' in navigator){
+		navigator.serviceWorker
+		.register('firebase-messaging-sw.js')
+		.then(function(){
+			console.log('Service Worker Registered');
+		});
+
+		}
+		</script>
+
+		<script>
   //FCMで取得したコードをコピー&ペーストする部分
   // Initialize Firebase
 	// Your web app's Firebase configuration
@@ -79,16 +91,6 @@ function viewToken(){
   });
 }
   </script>
-	<script  type="application/javascript">
-//Service Workerの読み込み
-if('serviceWorker' in navigator){
- navigator.serviceWorker
-	.register('firebase-messaging-sw.js')
-	.then(function(){
-		console.log('Service Worker Registered');
- });
 
-}
-</script>
   </body>
 </html>
