@@ -24,6 +24,7 @@ function requestPermission() {
             sendWebPush.value = 'https://andus.heteml.jp/firebase_cloud_messaging/send.php?id=' + token;
         }).catch(function(err) {
             textInstanceIdToken.value = 'トークンの取得に失敗しました（' + err + '）。';
+            console.log(err)
         });
     }).catch(function(err) {
         textInstanceIdToken.value = '通知の許可が得られませんでした（' + err + '）。';
