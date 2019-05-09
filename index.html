@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,38 +10,14 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
   <link rel="manifest" href="manifest.json">
-
-  <title>ランダムでしゃべる招き猫</title>
-
   <script src="jquery.js"></script>
-  <script type="text/javascript">
-
-    //台詞リスト
-    var serif = new Array;
-    serif[1] ="こんにちはにゃん";
-    serif[2] ="おはようにゃん";
-    serif[3] ="まねきねこ が あらわれた";
-    serif[4] ="イメージするのは常に最強の自分にゃ";
-    serif[5] ="お腹空いたにゃん";
-    serif[6] ="おやすみにゃ";
-
-
-   //ランダムに台詞を表示
-   function msg(){
-    var a = Math.floor( Math.random() * 6 );
-    $(".fukidashi").text(serif[a +1 ]);
- 　 }
-
- Notification.requestPermission(function(status) {
- console.log("通知の許可:", status);//コンソールに許可されたかどうかを表示
-});
-
-  </script>
+  <script src="main.js"></script>
+  <title>ランダムでしゃべる招き猫</title>
 </head>
 <body>
    <div class="container">
     <div class="fukidashi">招き猫をタップしてね</div><div class="fukidashi_fuchi"><img src="img/fukidashi_fuchi.png" alt=""></div>
-    <img src="img/cat.png" alt="タップでしゃべる"onclick="msg();" class="cat">
+    <img src="img/cat.png" alt="タップでしゃべる" onclick="msg();" class="cat">
    </div>
   <script  type="application/javascript">
   if('serviceWorker' in navigator){
@@ -51,9 +26,9 @@
     .then(function(){
       console.log('Service Worker Registered');
    });
-
   }
   </script>
+
 </body>
 
 </html>
