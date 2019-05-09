@@ -71,6 +71,18 @@ self.addEventListener("notificationclick", function(event) {
 });
 
 
+var firebaseConfig = {
+  apiKey: "AIzaSyDed0wplBQAobaE0qLFcaa3X_XWjCwOgRE",
+  authDomain: "pwa-push-test-33892.firebaseapp.com",
+  databaseURL: "https://pwa-push-test-33892.firebaseio.com",
+  projectId: "pwa-push-test-33892",
+  storageBucket: "pwa-push-test-33892.appspot.com",
+  messagingSenderId: "540875100731",
+  appId: "1:540875100731:web:0a20afa4e5eb652a"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
 importScripts("/__/firebase/4.10.0/firebase-app.js");
 importScripts("/__/firebase/4.10.0/firebase-messaging.js");
 importScripts("/__/firebase/init.js");
