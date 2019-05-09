@@ -5,7 +5,7 @@ const sendWebPushArea = document.getElementById('sendWebPushArea');
 const sendWebPush = document.getElementById('sendWebPush');
 
 // メッセージング オブジェクトの取得
-if (firebase.messaging.isSupported())
+if (firebase.messaging.isSupported()){
 	const messaging = firebase.messaging();
 }
 // アプリにウェブ認証情報を設定する
